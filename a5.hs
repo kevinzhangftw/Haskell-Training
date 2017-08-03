@@ -121,7 +121,23 @@ flipBit :: Bit -> Bit
 flipBit bit | bit==Zero = One
             | otherwise = Zero
 
+invert :: [Bit] -> [Bit]
+invert [] = []
+invert lst = map flipBit lst
 
+
+
+
+
+
+
+
+
+bitSum1 :: [Bit] -> Int
+bitSum1 lst = length (filter (\bit -> bit == One) lst)
+
+bitSum2 :: [Maybe Bit] -> Int
+bitSum2 lst = length (filter (\bit -> bit == Just One) lst)
 
 
 
