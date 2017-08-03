@@ -126,12 +126,11 @@ invert [] = []
 invert lst = map flipBit lst
 
 
-
-
-
-
-
-
+all_bit_seqs:: Int -> [[Bit]]
+all_bit_seqs 0 = []
+all_bit_seqs 1 = [[Zero],[One]]
+all_bit_seqs n = [ Zero : x | x <- prev ] ++ [ One : x | x <- prev ]
+                        where prev = all_bit_seqs (n-1)
 
 bitSum1 :: [Bit] -> Int
 bitSum1 lst = length (filter (\bit -> bit == One) lst)
