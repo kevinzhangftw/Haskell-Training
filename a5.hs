@@ -161,6 +161,12 @@ removeAll :: (a ->Bool)->List a-> List a
 removeAll f  Empty       = Empty
 removeAll f (Cons x lst) = if f x then removeAll f lst else Cons x (removeAll f lst) 
 
+sort :: Ord a => List a -> List a
+sort Empty = Empty
+sort (Cons x xs)= append smalls (Cons x bigs)
+                  where smalls = sort (removeAll (>x) xs)
+                        bigs = sort (removeAll (<=x) xs)
+
 
 
 
