@@ -139,5 +139,18 @@ bitSum1 lst = length (filter (\bit -> bit == One) lst)
 bitSum2 :: [Maybe Bit] -> Int
 bitSum2 lst = length (filter (\bit -> bit == Just One) lst)
 
+data List a = Empty | Cons a (List a)
+    deriving Show
+
+toList :: [a] -> List a
+toList [] = Empty
+toList (x:xs) = Cons x (toList xs)
+
+toHaskellList :: List a -> [a]
+toHaskellList Empty = []
+toHaskellList (Cons x lst) = [x] ++ toHaskellList(lst)
+
+
+
 
 
