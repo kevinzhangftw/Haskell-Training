@@ -54,4 +54,36 @@ biggest_sum [] = []
 biggest_sum (x:xs) 
                    | sum(x) >= sum(biggest_sum(xs)) = x
                    | sum(x) < sum(biggest_sum(xs)) = biggest_sum(xs)
-            
+
+greatest :: (a -> Int) -> [a] -> a
+greatest f [] = error "nothing in the list"
+greatest f [x] = x
+greatest f (x:xs) | f x > f (greatest f xs) = x
+                  | otherwise = greatest f xs
+
+is_bit :: Int -> Bool
+is_bit x | (x == 0) || (x==1) = True
+         | otherwise          = False
+
+flip_bit :: Int -> Int
+flip_bit x | is_bit x == False = error "Input is not a bit"
+           | x == 0 = 1
+           | x == 1 = 0
+
+is_bit_seq1:: [Int]->Bool
+is_bit_seq1 [] = True
+is_bit_seq1 (x:xs) | is_bit x == False = False
+                   | otherwise         = is_bit_seq1(xs)
+                    
+is_bit_seq2:: [Int]->Bool
+is_bit_seq2 [] = True
+is_bit_seq2 (x:xs) = if (is_bit x == False) then False else is_bit_seq2(xs)
+
+is_bit_seq3:: [Int]->Bool
+is_bit_seq3 [] = True
+is_bit_seq3 x = all is_bit x                    
+
+
+
+
+
