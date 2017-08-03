@@ -156,6 +156,11 @@ append left  Empty = left
 append Empty right = right
 append (Cons x lst) right = Cons x (append lst right)
 
+-- removeAll f L``that returns a ``List a
+removeAll :: (a ->Bool)->List a-> List a
+removeAll f  Empty       = Empty
+removeAll f (Cons x lst) = if f x then removeAll f lst else Cons x (removeAll f lst) 
+
 
 
 
