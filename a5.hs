@@ -150,6 +150,14 @@ toHaskellList :: List a -> [a]
 toHaskellList Empty = []
 toHaskellList (Cons x lst) = [x] ++ toHaskellList(lst)
 
+append :: List a -> List a -> List a
+append Empty Empty = Empty
+append left  Empty = left
+append Empty right = right
+append (Cons x lst) right = Cons x (append lst right)
+
+
+
 
 
 
