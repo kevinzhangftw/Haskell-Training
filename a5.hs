@@ -83,6 +83,18 @@ is_bit_seq3:: [Int]->Bool
 is_bit_seq3 [] = True
 is_bit_seq3 x = all is_bit x                    
 
+invert_bits1::[Int]->[Int]
+invert_bits1 [] = []
+invert_bits1 (x:xs) = [flip_bit x] ++ (invert_bits1 xs)
+
+invert_bits2::[Int]->[Int]
+invert_bits2 [] = []
+invert_bits2 lst = map flip_bit lst
+
+invert_bits3::[Int]->[Int]
+invert_bits3 [] = []
+invert_bits3 lst = [flip_bit x | x <- lst]
+
 
 
 
