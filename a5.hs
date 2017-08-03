@@ -49,5 +49,9 @@ count_emirps n
         | otherwise = length (filter is_emirp (primes_less_than n))
 
 
-
-
+biggest_sum :: [[Int]] -> [Int]
+biggest_sum [] = []
+biggest_sum (x:xs) 
+                   | sum(x) >= sum(biggest_sum(xs)) = x
+                   | sum(x) < sum(biggest_sum(xs)) = biggest_sum(xs)
+            
