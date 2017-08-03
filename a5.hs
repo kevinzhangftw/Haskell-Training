@@ -95,6 +95,18 @@ invert_bits3::[Int]->[Int]
 invert_bits3 [] = []
 invert_bits3 lst = [flip_bit x | x <- lst]
 
+bit_count::[Int]->(Int, Int)
+bit_count [] = (0,0)
+bit_count lst = (count0s lst, count1s lst)
+
+count0s::[Int]->Int
+count0s [] = 0
+count0s lst = foldr (\x y -> x + y) 0 (invert_bits1 lst)
+
+count1s::[Int]->Int
+count1s [] = 0
+count1s lst = foldr (\x y -> x + y) 0 lst
+
 
 
 
