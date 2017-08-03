@@ -107,6 +107,20 @@ count1s::[Int]->Int
 count1s [] = 0
 count1s lst = foldr (\x y -> x + y) 0 lst
 
+-- Adapted from https://wiki.haskell.org/99_questions/Solutions/49
+all_basic_bit_seqs:: Int->[[Int]]
+all_basic_bit_seqs 0 = []
+all_basic_bit_seqs 1 = [[0],[1]]
+all_basic_bit_seqs n = [ 0 : x | x <- prev ] ++ [ 1 : x | x <- prev ]
+                        where prev = all_basic_bit_seqs (n-1)
+
+data Bit = Zero | One
+    deriving (Show, Eq)
+
+flipBit :: Bit -> Bit
+flipBit bit | bit==Zero = One
+            | otherwise = Zero
+
 
 
 
